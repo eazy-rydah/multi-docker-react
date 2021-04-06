@@ -15,7 +15,6 @@ after_success:
   - docker build -t eazyrydah/multi-nginx ./nginx
   - docker build -t eazyrydah/multi-backend ./backend
   - docker build -t eazyrydah/multi-worker ./worker
-  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push eazyrydah/multi-frontend 
