@@ -1,0 +1,15 @@
+Hi Tauren-
+
+I haven't gone through this process myself, but I did put a lot of thought into it - I was originally going to show DO deployment in this course instead of AWS.
+
+Steps:
+1) Create a DO droplet: https://www.digitalocean.com/docs/one-clicks/docker/
+
+2) Configure travis to be able to SSH into the droplet.  Steps #1,2 here: https://medium.com/@tibotiber/deployment-of-static-websites-to-digital-ocean-using-travisci-957e6e0f1f9d
+
+3) Wire up a custom deployment script in the travis.yml file instead of the AWS EB stuff I show.  Directions on how to do that: https://docs.travis-ci.com/user/deployment/script
+
+4) In the deployment script, ssh into the droplet, pull the latest docker images, stop the existing containers, and start up a new one using the latest image
+
+
+Note that with #4 there will a service interruption - there will be a period of time where no server is running, so any user trying to access your page will see an error message.  That was a part that I never looked into.
